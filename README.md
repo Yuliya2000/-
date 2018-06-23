@@ -4,8 +4,9 @@
 #include "windows.h"
 void func(int numb);
 char mil(int a, int b, int c, char *str);
-char tau(int a1, int b1, int c1, char *str1);
+char thoy(int a1, int b1, int c1, char *str1);
 char hun(int a2, int b2, int c2, char *str2);
+char pr(int l, int k, int &j, char *st); 
 int main() {
 	int num;
 		SetConsoleCP(1251);
@@ -23,7 +24,7 @@ setlocale(LC_CTYPE, "ukr");
 }
 void func(int numb) {
 	char s[100]={0}; 
-	int pos=0, rest, p, mas[10]={0}, div=1000000000;
+	int  rest, p, mas[10]={0}, div=1000000000;
 	for (int i = 0; i < 10; i++) {
     rest = (int)(numb / div);
     mas[i] = rest;
@@ -37,52 +38,13 @@ void func(int numb) {
 		default: break;
 	}	
 	mil(mas[1], mas[2], mas[3], s);
-	tau(mas[4], mas[5], mas[6], s);
+	thoy(mas[4], mas[5], mas[6], s);
 	hun(mas[7], mas[8], mas[9], s);
 	printf("%s\n", s);	
 }
 char mil(int a, int b, int c, char *str) {
+	pr(a, b, c, str);
 	int p=strlen(str);
-	switch(a) {
-		case 1: strcpy(str+p, "сто "); break;
-		case 2: strcpy(str+p, "двісті "); break;
-		case 3: strcpy(str+p, "триста "); break;
-		case 4: strcpy(str+p, "чотириста "); break;
-		case 5: strcpy(str+p, "п'ятсот "); break;
-		case 6: strcpy(str+p, "шістсот "); break;
-		case 7: strcpy(str+p, "сімсот "); break;
-		case 8: strcpy(str+p, "вісімсот "); break;
-		case 9: strcpy(str+p, "дев'ятсот "); break;
-		default: break;
-	}
-	p=strlen(str);
-	switch(b) {
-		case 1:
-			switch(c) {
-				case 0: strcpy(str+p, "десять "); break;
-				case 1: strcpy(str+p, "одинадцять "); break;
-				case 2: strcpy(str+p, "дванадцять "); break;
-				case 3: strcpy(str+p, "тринадцять "); break;
-				case 4: strcpy(str+p, "чотирнадцять "); break;
-				case 5: strcpy(str+p, "п'ятнадцять "); break;
-				case 6: strcpy(str+p, "шістнадцять "); break;
-				case 7: strcpy(str+p, "сімнадцять "); break;
-				case 8: strcpy(str+p, "вісімнадцять "); break;
-				case 9: strcpy(str+p, "дев'ятнадцять "); break;
-				default: break;
-			}
-			c=0; break;
-		case 2: strcpy(str+p, "двадцять "); break;
-		case 3: strcpy(str+p, "тридцять "); break;
-		case 4: strcpy(str+p, "сорок "); break;
-		case 5: strcpy(str+p, "п'ятдесят "); break;
-		case 6: strcpy(str+p, "шістдесят "); break;
-		case 7: strcpy(str+p, "сімдесят "); break;
-		case 8: strcpy(str+p, "вісімдесят "); break;
-		case 9: strcpy(str+p, "дев'яносто "); break;
-			default: break;
-	}
-	p=strlen(str);
 	switch(c) {
 		case 1: strcpy(str+p, "один мільйон "); break;
 		case 2: strcpy(str+p, "два мільйони "); break;
@@ -97,48 +59,9 @@ char mil(int a, int b, int c, char *str) {
 	}
 	return *str;
 }
-char tau(int a1, int b1, int c1, char *str1) {
+char thoy(int a1, int b1, int c1, char *str1) {
+	pr(a1, b1, c1, str1);
 	int p=strlen(str1);
-		switch(a1) {
-		case 1: strcpy(str1+p, "сто "); break;
-		case 2: strcpy(str1+p, "двісті "); break;
-		case 3: strcpy(str1+p, "триста "); break;
-		case 4: strcpy(str1+p, "чотириста "); break;
-		case 5: strcpy(str1+p, "п'ятсот "); break;
-		case 6: strcpy(str1+p, "шістсот "); break; 
-		case 7: strcpy(str1+p, "сімсот "); break;
-		case 8: strcpy(str1+p, "вісімсот "); break;
-		case 9: strcpy(str1+p, "дев'ятсот "); break;
-			default: break;
-	}
-	p=strlen(str1);
-	switch(b1) {
-		case 1:
-			switch(c1) {
-				case 0: strcpy(str1+p, "десять "); break;
-				case 1: strcpy(str1+p, "одинадцять "); break;
-				case 2: strcpy(str1+p, "дванадцять "); break;
-				case 3: strcpy(str1+p, "тринадцять "); break;
-				case 4: strcpy(str1+p, "чотирнадцять "); break;
-				case 5: strcpy(str1+p, "п'ятнадцять "); break;
-				case 6: strcpy(str1+p, "шістнадцять "); break;
-				case 7: strcpy(str1+p, "сімнадцять "); break;
-				case 8: strcpy(str1+p, "вісімнадцять "); break;
-				case 9: strcpy(str1+p, "дев'ятнадцять "); break;
-					default: break;
-			}
-			c1=0;	break;
-		case 2: strcpy(str1+p, "двадцять "); break;
-		case 3: strcpy(str1+p, "тридцять "); break;
-		case 4: strcpy(str1+p, "сорок "); break;
-		case 5: strcpy(str1+p, "п'ятдесят "); break;
-		case 6: strcpy(str1+p, "шістдесят "); break;
-		case 7: strcpy(str1+p, "сімдесят "); break;
-		case 8: strcpy(str1+p, "вісімдесят "); break;
-		case 9: strcpy(str1+p, "дев'яносто "); break;
-			default: break;
-	}
-	p=strlen(str1);
 	switch(c1) {
 		case 1: strcpy(str1+p, "одна тисяча "); break;
 		case 2: strcpy(str1+p, "дві тисячи "); break; 
@@ -154,47 +77,8 @@ char tau(int a1, int b1, int c1, char *str1) {
 	return *str1;
 }
 char hun(int a2, int b2, int c2, char *str2) {
+    pr(a2, b2, c2, str2);
 	int p=strlen(str2);
-		switch(a2) {
-	case 1: strcpy(str2+p, "сто "); break;
-	case 2: strcpy(str2+p, "двісті "); break;
-	case 3: strcpy(str2+p, "триста "); break;
-	case 4: strcpy(str2+p, "чотириста "); break;
-	case 5: strcpy(str2+p, "п'ятьсот "); break;
-	case 6: strcpy(str2+p, "шістсот "); break;
-	case 7: strcpy(str2+p, "сімсот "); break;
-	case 8: strcpy(str2+p, "вісімсот "); break;
-	case 9: strcpy(str2+p, "дев'ятьсот "); break;
-	default: break;	
-	}
-	p=strlen(str2);
-	switch(b2) {
-	 case 1:
-	  	switch(c2) {
-	  		case 0: strcpy(str2+p, "десять "); break;
- 			case 1: strcpy(str2+p, "одинадцять "); break;
-			case 2: strcpy(str2+p, "дванадцять "); break;
-			case 3: strcpy(str2+p, "тринадцять "); break;
-			case 4: strcpy(str2+p, "чотирнадцять "); break;
-			case 5: strcpy(str2+p, "п'ятнадцять "); break;
-			case 6: strcpy(str2+p, "шістнадцять "); break;
-			case 7: strcpy(str2+p, "сімнадцять "); break;
-			case 8: strcpy(str2+p, "вісімнадцять "); break;
-			case 9: strcpy(str2+p, "дев'ятнадцять "); break;
-				default: break;
-					}
-		c2=0;	break;
-	case 2: strcpy(str2+p, "двадцять "); break;
-	case 3: strcpy(str2+p, "тридцять "); break;
-	case 4: strcpy(str2+p, "сорок "); break;
-	case 5: strcpy(str2+p, "п'ятдесят "); break;
-	case 6: strcpy(str2+p, "шістдесят "); break;
-	case 7: strcpy(str2+p, "сімдесят "); break;
-	case 8: strcpy(str2+p, "вісімдесят "); break;
-	case 9: strcpy(str2+p, "дев'яносто "); break;
-	default: break;	
-	}
-	p=strlen(str2);
 	switch(c2) {
 		case 1: strcpy(str2+p, "один "); break;
 		case 2: strcpy(str2+p, "два "); break;
@@ -207,4 +91,47 @@ char hun(int a2, int b2, int c2, char *str2) {
 		case 9: strcpy(str2+p, "дев'ять "); break;
 		default: break;
 	}
+}
+char pr(int l, int k, int &j, char *st) {
+		int p=strlen(st);
+		switch(l) {
+	case 1: strcpy(st+p, "сто "); break;
+	case 2: strcpy(st+p, "двісті "); break;
+	case 3: strcpy(st+p, "триста "); break;
+	case 4: strcpy(st+p, "чотириста "); break;
+	case 5: strcpy(st+p, "п'ятьсот "); break;
+	case 6: strcpy(st+p, "шістсот "); break;
+	case 7: strcpy(st+p, "сімсот "); break;
+	case 8: strcpy(st+p, "вісімсот "); break;
+	case 9: strcpy(st+p, "дев'ятьсот "); break;
+	default: break;	
+	}
+	p=strlen(st);
+	switch(k) {
+	 case 1:
+	  	switch(j) {
+	  		case 0: strcpy(st+p, "десять "); break;
+ 			case 1: strcpy(st+p, "одинадцять "); break;
+			case 2: strcpy(st+p, "дванадцять "); break;
+			case 3: strcpy(st+p, "тринадцять "); break;
+			case 4: strcpy(st+p, "чотирнадцять "); break;
+			case 5: strcpy(st+p, "п'ятнадцять "); break;
+			case 6: strcpy(st+p, "шістнадцять "); break;
+			case 7: strcpy(st+p, "сімнадцять "); break;
+			case 8: strcpy(st+p, "вісімнадцять "); break;
+			case 9: strcpy(st+p, "дев'ятнадцять "); break;
+				default: break;
+					}
+		j=0;	break;
+	case 2: strcpy(st+p, "двадцять "); break;
+	case 3: strcpy(st+p, "тридцять "); break;
+	case 4: strcpy(st+p, "сорок "); break;
+	case 5: strcpy(st+p, "п'ятдесят "); break;
+	case 6: strcpy(st+p, "шістдесят "); break;
+	case 7: strcpy(st+p, "сімдесят "); break;
+	case 8: strcpy(st+p, "вісімдесят "); break;
+	case 9: strcpy(st+p, "дев'яносто "); break;
+	default: break;	
+	}
+	return *st;
 }
